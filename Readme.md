@@ -20,9 +20,6 @@ baseUrl defined in config.js
 ***No external reports integrated as of now**
 
 **To execute Postman API automated Test**
-1. Download FAL_Assignment.postman_collection.json  Postman collection
+1. Download Postman collection : FAL_Assignment.postman_collection.json  
 2. Import and run the collection
-3. It covered : Getallonjects with Test,Getobject with specific ids and Getobject with concatinating ids
-
-
-
+3. It coveres  : Getallobjects with Test,Getobject with specific ids and Getobject with concatinating ids
