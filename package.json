@@ -1,0 +1,15 @@
+{
+  "name": "fal",
+  "version": "1.0.0",
+  "description": "Test automation assignment for Contact us segment",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run --browser chrome"
+  },
+  "author": "Dikshant",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.12.0",
+    "ng-recaptcha": "^7.0.1"
+  }
+}
