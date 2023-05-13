@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -130,7 +129,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 =======
+
+#dependencies
 /node_modules
+
+#videos and Screenshots
 cypress/videos
 cypress/screenshots
->>>>>>> b76de3e (Added gitignore file)
+
