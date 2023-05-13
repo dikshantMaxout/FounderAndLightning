@@ -12,9 +12,10 @@ Test data file where contact details are getting fetched at run time
 baseUrl defined in config.js 
 
 **To execute Cypress UI automated Test**
-1. git clone the project
-2. npm install 
-3. npm test -- Defined in package.json to run the spec file on chrome
+1. git clone the project to any folder
+2. Make sure after cloning , open : cloned folder > FounderAndLightning > Open
+3. npm install 
+4. npm test -- Defined in package.json to run the spec file on chrome
 
 ***No external reports integrated as of now**
 
