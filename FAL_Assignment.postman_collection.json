@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "462e9cf4-1df5-450d-b78e-f29a4843a71c",
+		"name": "FAL_Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27369338"
+	},
+	"item": [
+		{
+			"name": "GetAllObject",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('To verify status code is 200',function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test('To verify response body is valid and in Json format',function(){",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"})",
+							"",
+							"",
+							"pm.test('To verify Number of IDs=13',function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.equal(13);",
+							"});",
+							"",
+							"pm.test('Validate name,color and capicity of object with id=1',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[0].id).equal(\"1\")",
+							"    pm.expect(res_data[0].name).to.eql(\"Google Pixel 6 Pro\")",
+							"    pm.expect(res_data[0].data.color).to.eql(\"Cloudy White\")",
+							"    pm.expect(res_data[0].data.capacity).to.eql(\"128 GB\")",
+							"})",
+							"",
+							"pm.test('Validate name,color and capicity of object with id=2',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[1].id).equal(\"2\")",
+							"    pm.expect(res_data[1].name).to.eql(\"Apple iPhone 12 Mini, 256GB, Blue\")",
+							"    pm.expect(res_data[1].data).to.be.null",
+							"})",
+							"",
+							"pm.test('Validate name and data of object with id=3',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[2].id).equal(\"3\")",
+							"    pm.expect(res_data[2].name).to.eql(\"Apple iPhone 12 Pro Max\")",
+							"    pm.expect(res_data[2].data.color).to.be.equal('Cloudy White')",
+							"    pm.expect(res_data[2].data[\"capacity GB\"]).to.be.equal(512)",
+							"})",
+							"",
+							"pm.test('Typeof object names should be in string',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        console.log(typeof data[i].name)",
+							"        pm.expect(typeof data[i].name).to.be.equal(\"string\")",
+							"        }",
+							"    })",
+							"",
+							"pm.test('Ids of any object should not be null or blank ',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        pm.expect(data[i].id).not.to.be.null",
+							"        }",
+							"    })",
+							"",
+							" ",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetObject_with_ids_1_5_10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('To verify status code is 200', function () {",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test('To verify response body is valid and in Json format', function () {",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"})",
+							"",
+							"",
+							"pm.test('To verify Number of IDs=3', function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.equal(3);",
+							"});",
+							"",
+							"pm.test('Validate name,color and capicity of object with id=1', function () {",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[0].id).equal(\"1\")",
+							"    pm.expect(res_data[0].name).to.eql(\"Google Pixel 6 Pro\")",
+							"    pm.expect(res_data[0].data.color).to.eql(\"Cloudy White\")",
+							"    pm.expect(res_data[0].data.capacity).to.eql(\"128 GB\")",
+							"})",
+							"",
+							"pm.test('Validate name,price and color of object with id=5', function () {",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[1].id).equal(\"5\")",
+							"    pm.expect(res_data[1].name).to.eql(\"Samsung Galaxy Z Fold2\")",
+							"    pm.expect(res_data[1].data.price).to.eql(689.99)",
+							"    pm.expect(res_data[1].data.color).to.eql(\"Brown\")",
+							"})",
+							"",
+							"pm.test('Validate name , capacity and screen size of object with id=10', function () {",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[2].id).equal(\"10\")",
+							"    pm.expect(res_data[2].name).to.eql(\"Apple iPad Mini 5th Gen\")",
+							"    pm.expect(res_data[2].data.Capacity).to.be.equal('64 GB')",
+							"    pm.expect(res_data[2].data[\"Screen size\"]).to.be.equal(7.9)",
+							"})",
+							"",
+							"pm.test('Typeof object names should be in string', function () {",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for (i = 0; i < data.length; i++) {",
+							"        console.log(typeof data[i].name)",
+							"        pm.expect(typeof data[i].name).to.be.equal(\"string\")",
+							"    }",
+							"})",
+							"",
+							"pm.test('Ids of any object should not be null or blank ', function () {",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for (i = 0; i < data.length; i++) {",
+							"        pm.expect(data[i].id).not.to.be.null",
+							"    }",
+							"})",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?id=1&id=5&id=10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetObject_with_id_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('To verify status code is 200',function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test('To verify response body is valid and in Json format',function(){",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"})",
+							"",
+							"",
+							"pm.test('To verify Number of IDs=1',function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.equal(1);",
+							"});",
+							"",
+							"pm.test('Validate name,color and capicity of object with id=1',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[0].id).equal(\"1\")",
+							"    pm.expect(res_data[0].name).to.eql(\"Google Pixel 6 Pro\")",
+							"    pm.expect(res_data[0].data.color).to.eql(\"Cloudy White\")",
+							"    pm.expect(res_data[0].data.capacity).to.eql(\"128 GB\")",
+							"})",
+							"",
+							"pm.test('Typeof object names should be in string',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        console.log(typeof data[i].name)",
+							"        pm.expect(typeof data[i].name).to.be.equal(\"string\")",
+							"        }",
+							"    })",
+							"",
+							"pm.test('Ids of any object should not be null or blank ',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        pm.expect(data[i].id).not.to.be.null",
+							"        }",
+							"    })"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?id=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetObject_with_id_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('To verify status code is 200',function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test('To verify response body is valid and in Json format',function(){",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"})",
+							"",
+							"",
+							"pm.test('To verify Number of IDs=1',function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.equal(1);",
+							"});",
+							"",
+							"pm.test('Validate name,price and color of object with id=5',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[0].id).equal(\"5\")",
+							"    pm.expect(res_data[0].name).to.eql(\"Samsung Galaxy Z Fold2\")",
+							"    pm.expect(res_data[0].data.price).to.eql(689.99)",
+							"    pm.expect(res_data[0].data.color).to.eql(\"Brown\")",
+							"})",
+							"",
+							"pm.test('Typeof object name should be in string',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        console.log(typeof data[i].name)",
+							"        pm.expect(typeof data[i].name).to.be.equal(\"string\")",
+							"        }",
+							"    })",
+							"",
+							"pm.test('Id of  object should not be null or blank ',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        pm.expect(data[i].id).not.to.be.null",
+							"        }",
+							"    })",
+							"",
+							" ",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?id=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetObject_with_id_10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('To verify status code is 200',function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test('To verify response body is valid and in Json format',function(){",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"})",
+							"",
+							"",
+							"pm.test('To verify Number of IDs=1',function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.equal(1);",
+							"});",
+							"",
+							"pm.test('Validate name,capicity and screen size of object with id=10',function(){",
+							"    const res_data = pm.response.json()",
+							"    pm.expect(res_data[0].id).equal(\"10\")",
+							"    pm.expect(res_data[0].name).to.eql(\"Apple iPad Mini 5th Gen\")",
+							"    pm.expect(res_data[0].data.Capacity).to.eql(\"64 GB\")",
+							"    pm.expect(res_data[0].data[\"Screen size\"]).to.eql(7.9)",
+							"})",
+							"pm.test('Typeof object name should be in string',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        console.log(typeof data[i].name)",
+							"        pm.expect(typeof data[i].name).to.be.equal(\"string\")",
+							"        }",
+							"    })",
+							"",
+							"pm.test('Id of  object should not be null or blank ',function(){",
+							"    var data = pm.response.json()",
+							"    var i;",
+							"    for(i = 0 ; i<data.length ; i++){",
+							"        pm.expect(data[i].id).not.to.be.null",
+							"        }",
+							"    })",
+							"",
+							" ",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?id=10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
