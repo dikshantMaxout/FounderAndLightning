@@ -17,7 +17,7 @@ describe('Contact Page tests', function () {
 
    it('TC01 : To validate the navigation of contact URL', function () {
       cy.url().should('include', 'contact')
-      cy.contains('Contact').should('be.visible', 'true')
+      cy.get('h1').contains('Contact').should('be.visible', 'true')
    })
 
    it('TC02: To verify the error message on incorrect format of email id.', function () {
@@ -79,10 +79,10 @@ describe('Contact Page tests', function () {
       contactpage.fillMobile(contact_data.mobile)
       contactpage.selectdropdown(contact_data.item3)
       contactpage.fillMessage(contact_data.message)
+      contactpage.clickSendMessage() //clicking on Send Message button
       cy.HandleReCAPTCHA() // This is a custom  //this is to handle re-captcha but not working as 
       //unable to bypass as it seems to be production site.
       //QA may handshake with Dev in lower environment to disable the Google captcha service.
-      contactpage.clickSendMessage() //clicking on Send Message button
       contactpage.getConfirmMessage() //This is to verify the confirmation message after detailsubmitting.
    })
 
